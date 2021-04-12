@@ -32,25 +32,17 @@ class App extends Component {
 
   swipeTo(id) {
       if(id === 1){
-          this.focusHome.current.scrollIntoView({ 
-              behavior: "smooth", 
-              block: "start"
-          })
+        const y = this.focusHome.current.getBoundingClientRect().top + window.pageYOffset - 50;
+        window.scrollTo({top: y, behavior: "smooth"})
       } else if(id === 2) {
-        this.focusAboutMe.current.scrollIntoView({ 
-              behavior: "smooth", 
-              block: "start"
-          })
+        const y = this.focusAboutMe.current.getBoundingClientRect().top + window.pageYOffset - 50;
+        window.scrollTo({top: y, behavior: "smooth"})
       } else if(id === 3) {
-        this.focusProjects.current.scrollIntoView({ 
-              behavior: "smooth", 
-              block: "start"
-          })
+        const y = this.focusProjects.current.getBoundingClientRect().top + window.pageYOffset - 50;
+        window.scrollTo({top: y, behavior: "smooth"})
       } else if(id === 4) {
-        this.focusContact.current.scrollIntoView({ 
-              behavior: "smooth", 
-              block: "start"
-          })
+        const y = this.focusContact.current.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({top: y, behavior: "smooth"})
       }
       if(this.state.mobileMenuVisible) {
         this.toggleMenu()
