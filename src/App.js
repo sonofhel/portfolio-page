@@ -44,13 +44,16 @@ class App extends Component {
       } else if(id === 3) {
         this.focusProjects.current.scrollIntoView({ 
               behavior: "smooth", 
-              block: "center"
+              block: "start"
           })
       } else if(id === 4) {
         this.focusContact.current.scrollIntoView({ 
               behavior: "smooth", 
               block: "start"
           })
+      }
+      if(this.state.mobileMenuVisible) {
+        this.toggleMenu()
       }
   }
 
@@ -89,7 +92,7 @@ class App extends Component {
               <ul className="nav-menu">
                 {NavItems.map(navItem => {
                   return (
-                    <li className="nav-item" key={navItem.id}>
+                    <li className="nav-item" key={navItem.id} onClick={() => this.swipeTo(navItem.id)}>
                       {navItem.name}
                     </li>
                   )
