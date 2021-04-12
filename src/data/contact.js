@@ -13,7 +13,7 @@ const Contact = [
   },
   {
     id: 3,
-    text: "<a href='https://www.linkedin.com/in/dawid-bobowski-aa7907209/'>profile</a>" ,
+    text: "https://www.linkedin.com/in/dawid-bobowski-aa7907209/" ,
     icon: <FiLinkedin className="contact-icon" />
   }
 ]

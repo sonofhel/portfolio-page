@@ -1,6 +1,7 @@
-import {Component, createRef} from "react"
+import {Component} from "react"
 import {GrClose, GrMenu} from "react-icons/gr"
 import {GoCode} from "react-icons/go"
+import ReactTooltip from "react-tooltip"
 import "./App.css"
 import NavItems from "./data/navItems"
 import SocialLinks from "./data/socialLinks"
@@ -15,10 +16,6 @@ class App extends Component {
       mobileMenuVisible: false,
     }
     this.toggleMenu = this.toggleMenu.bind(this)
-    this.focusHome = createRef()
-    this.focusAboutMe = createRef()
-    this.focusProjects = createRef()
-    this.focusContact = createRef()
   }
 
   toggleMenu() {
@@ -30,23 +27,36 @@ class App extends Component {
     })
   }
 
-  swipeTo(id) {
-      if(id === 1){
-        const y = this.focusHome.current.getBoundingClientRect().top + window.pageYOffset - 50;
-        window.scrollTo({top: y, behavior: "smooth"})
-      } else if(id === 2) {
-        const y = this.focusAboutMe.current.getBoundingClientRect().top + window.pageYOffset - 50;
-        window.scrollTo({top: y, behavior: "smooth"})
-      } else if(id === 3) {
-        const y = this.focusProjects.current.getBoundingClientRect().top + window.pageYOffset - 50;
-        window.scrollTo({top: y, behavior: "smooth"})
-      } else if(id === 4) {
-        const y = this.focusContact.current.getBoundingClientRect().top + window.pageYOffset - 80;
-        window.scrollTo({top: y, behavior: "smooth"})
+  showContact(id) {
+    const contacts = document.getElementsByClassName("contact-p")
+    Array.from(contacts).forEach((contact, index) => {
+      if(index !== id-1) {
+        contact.style.display = "none"
+      } else {
+        contact.style.display = "block"
       }
-      if(this.state.mobileMenuVisible) {
-        this.toggleMenu()
-      }
+    })
+  }
+
+  divNames = [
+    "home", "about-me", "projects", "contact"
+  ]
+
+  swipeTo(divID) {
+    const y = document.getElementById(this.divNames[divID-1]).getBoundingClientRect().top + window.pageYOffset - 50;
+    window.scrollTo({top: y, behavior: "smooth"})
+    if(this.state.mobileMenuVisible) {
+      this.toggleMenu()
+    }
+  }
+
+  toClipboard(text) {
+    const el = document.createElement('textarea')
+    el.value = text
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
   }
 
   render() {
@@ -92,13 +102,13 @@ class App extends Component {
               </ul>
           </nav>
         }
-        <section className="home dark" ref={this.focusHome}>
+        <section className="home dark" id="home">
           <div className="text-container">
             <h1>Dawid Bobowski</h1>
             <h3>self-taught future web developer</h3>
           </div>
         </section>
-        <section className="about-me" ref={this.focusAboutMe}>
+        <section className="about-me light" id="about-me">
           <h2>About Me</h2>
           <div className="underline"></div>
           <div className="about-me-wrapper">
@@ -110,7 +120,7 @@ class App extends Component {
             </div>
           </div>
         </section>
-        <section className="projects dark" ref={this.focusProjects}>
+        <section className="projects dark" id="projects">
           <h2>Projects</h2>
           <div className="underline"></div>
           <div className="projects-wrapper">
@@ -130,23 +140,24 @@ class App extends Component {
             })}
           </div>
         </section>
-        <div className="section-divider"></div>
-        <section className="contact dark" ref={this.focusContact}>
-            <h2>Contact</h2>
-            <div className="underline"></div>
+        <div className="section-divider light"></div>
+        <section className="contact dark" id="contact">
+          <h2>Contact</h2>
+          <div className="underline"></div>
           <div className="contact-wrapper">
             {Contacts.map(contact => {
               return (
-                <div className="contact-item" key={contact.id}>
+                <div className="contact-item" key={contact.id} onClick={() => this.showContact(contact.id)}>
                   {contact.icon}
-                  {contact.id !== 3 && <p>{contact.text}</p>}
-                  {contact.id === 3 && <p><a href={contact.id}>profile</a></p>}
+                  {contact.id !== 3 && <p className="contact-p" onClick={() => this.toClipboard(contact.text)} data-tip="Copied to clipboard!">{contact.text}</p>}
+                  {contact.id === 3 && <p className="contact-p"><a href={contact.text} target="_blank" rel="noreferrer">profile</a></p>}
+                  <ReactTooltip eventOff="mouseout" delayHide="3000" event="click" />
                 </div>
               )
             })}
           </div>
         </section>
-        <footer>
+        <footer className="light">
           <div className="social-links">
             {SocialLinks.map(socialLink => {
               return (
