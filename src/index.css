@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Open+Sans:wght@400;700&display=swap');
+:root {
+  --col-dark: #1e2022;
+  --col-light: #f0f5f9;
+  --col-grey-1: #52616b;
+  --col-grey-2: #c9d6df;
+  --light-blue: #3282b8;
+  --dark-blue: #0f4c75;
+  --font-headers: "Fugaz One", cursive;
+  --font-text: "Open Sans", sans-serif;
+  --transition: 0.25s ease-out;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  background-color: var(--col-light);
+  font-family: var(--font-text), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-headers);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--light-blue);
+}
+
+.dark {
+  color: var(--col-light);
+  background-color: var(--col-dark);
+}
+
+.light {
+  color: var(--col-dark);
+  background-color: var(--col-light);
+}
+
+p span {
+  color: var(--light-blue);
+  font-weight: bold;
+}
+
+.box-shadow {
+  box-shadow: 0px 15px 30px 0px rgba(0, 0, 0, 0.8);
+}
+
+.underline, .underline-blue {
+  width: 50%;
+  max-width: 18rem;
+  border: 1px solid var(--col-grey-1);
+  margin: 0 auto;
+}
+
+.section-divider {
+  height: 15vh;
+}
