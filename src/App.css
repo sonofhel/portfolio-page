@@ -223,15 +223,21 @@ a, a:link, a:visited, a:hover, a:active {
 .contact {
   display: flex;
   flex-direction: column;
-  padding-bottom: 2rem;
+  padding: 3rem 0;
 }
 
 .contact h2 {
   margin-bottom: 0;
 }
 
+.contact span {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--col-grey-1);
+}
+
 .contact-wrapper {
-  max-width: 30vw;
+  /* max-width: 30vw; */
   margin: 2rem auto;
   display: flex;
   flex-direction: row;
@@ -243,7 +249,7 @@ a, a:link, a:visited, a:hover, a:active {
   flex-direction: row;
   align-items: center;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--col-dark);
   transition: var(--transition);
 }
 
@@ -351,9 +357,7 @@ footer h3 {
   }
   .about-me-wrapper {
     flex-direction: column;
-  }
-  .about-me-wrapper img {
-    margin: 0 auto;
+    align-items: center;
   }
   .contact-wrapper {
     max-width: 70vw;

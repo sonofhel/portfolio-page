@@ -140,24 +140,24 @@ class App extends Component {
             })}
           </div>
         </section>
-        <div className="section-divider light"></div>
-        <section className="contact dark" id="contact">
+        {/* <div className="section-divider light"></div> */}
+        <section className="contact light" id="contact">
           <h2>Contact</h2>
           <div className="underline"></div>
           <div className="contact-wrapper">
             {Contacts.map(contact => {
               return (
-                <div className="contact-item" key={contact.id} onClick={() => this.showContact(contact.id)}>
+                <div className="contact-item dark" key={contact.id} onClick={() => this.showContact(contact.id)}>
                   {contact.icon}
                   {contact.id !== 3 && <p className="contact-p" onClick={() => this.toClipboard(contact.text)} data-tip="Copied to clipboard!">{contact.text}</p>}
                   {contact.id === 3 && <p className="contact-p"><a href={contact.text} target="_blank" rel="noreferrer">profile</a></p>}
-                  <ReactTooltip eventOff="mouseout" delayHide="3000" event="click" />
+                  <ReactTooltip eventOff="mouseout || scroll" delayHide="3000" event="click" />
                 </div>
               )
             })}
           </div>
         </section>
-        <footer className="light">
+        <footer className="dark">
           <div className="social-links">
             {SocialLinks.map(socialLink => {
               return (
