@@ -1,5 +1,6 @@
 import ProjectImage1 from "../images/shoplist-preview.jpg"
 import ProjectImage2 from "../images/portfolio-page-preview.jpg"
+import ProjectImage3 from "../images/photogram-preview.jpg"
 
 const projects = [
   {
@@ -17,6 +18,14 @@ const projects = [
     description: "Portfolio page where I showcase all of my projects. Added it to the list because it was also created using React.js.",
     githubLink: "https://github.com/sonofhel/portfolio-page",
     liveLink: "https://portfolio-by-dave.netlify.app/",
+  },
+  {
+    id: 3,
+    title: "photogram",
+    image: ProjectImage3,
+    description: "Instagram clone app created using React, Tailwind and Firebase. Based on Codecademy tutorial. I'm planning to change backend in the future.",
+    githubLink: "",
+    liveLink: "",
   },
 ]
 

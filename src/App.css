@@ -206,6 +206,8 @@
 .project p {
   max-width: 50rem;
   padding: 0 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a, a:link, a:visited, a:hover, a:active {
@@ -320,7 +322,7 @@ footer h3 {
     padding-bottom: 25vh;
   }
   .home .text-container {
-    margin-right: 25vw;
+    margin-right: 5vw;
   }
   .project:hover {
     background-color: rgba(0, 0, 0, 0.7);

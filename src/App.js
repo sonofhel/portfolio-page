@@ -117,9 +117,17 @@ class App extends Component {
                   <img src={project.image} alt="" />
                   <div className="text-container">
                     <p>{project.description}</p>
-                    <a href={project.githubLink} target="_blank" rel="noreferrer">Github</a>
-                    {" / "}
-                    <a href={project.liveLink} target="_blank" rel="noreferrer">Live</a>
+
+                    { project.githubLink &&
+                      <a href={project.githubLink} target="_blank" rel="noreferrer">Github</a>
+                    }
+                    { project.githubLink && " / " }
+                    { project.liveLink &&
+                      <a href={project.liveLink} target="_blank" rel="noreferrer">Live</a>
+                    }
+                    { !project.githubLink && !project.liveLink &&
+                      <p style={{fontStyle: "italic"}}>work in progress</p>
+                    }
                   </div>
                 </article>
               )
