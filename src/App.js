@@ -26,25 +26,34 @@ class App extends Component {
     })
   }
 
-  showContact(id) {
-    const contacts = document.getElementsByClassName("contact-p")
-    Array.from(contacts).forEach((contact, index) => {
-      if(index !== id-1) {
-        contact.style.display = "none"
-      } else {
-        contact.style.display = "block"
-      }
-    })
-  }
-
   swipeTo(divID) {
     const sectionNames = [
       "home", "about-me", "projects", "contact"
     ]
-    const y = document.getElementById(sectionNames[divID-1]).getBoundingClientRect().top + window.pageYOffset - 50
-    window.scrollTo({top: y, behavior: "smooth"})
-    console.log(this.state.mobileMenuVisible)
-    if(this.state.mobileMenuVisible) {
+    var y = 0
+
+    switch(divID) {
+      case 1:
+        window.scrollTo({ top: y, behavior: "smooth" })
+        break
+      case 2:
+      case 3:
+        var margin = 50
+        if(window.innerWidth < 600) {
+          margin = 300
+        }
+        y = document.getElementById(sectionNames[divID-1]).getBoundingClientRect().top + window.pageYOffset - margin
+        window.scrollTo({ top: y, behavior: "smooth" })
+        break
+      case 4:
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })
+        break
+      default:
+        break
+    }
+
+
+    if(window.innerWidth < 600 && this.state.mobileMenuVisible) {
       this.toggleMenu()
     }
   }
@@ -123,11 +132,24 @@ class App extends Component {
           <div className="contact-wrapper">
             {Contacts.map(contact => {
               return (
-                <div className="contact-item dark" key={contact.id} onClick={() => this.showContact(contact.id)}>
+                <div className="contact-item dark" key={contact.id}>
                   {contact.icon}
-                  {contact.id !== 3 && <p className="contact-p" onClick={() => this.toClipboard(contact.text)} data-tip="Copied to clipboard!">{contact.text}</p>}
-                  {contact.id === 3 && <p className="contact-p"><a href={contact.text} target="_blank" rel="noreferrer">profile</a></p>}
-                  <ReactTooltip eventOff="mouseout || scroll" delayHide="3000" event="click" />
+                  {contact.id !== 3 &&
+                    <p
+                      onClick={() => this.toClipboard(contact.text)}
+                      data-tip="Copied to clipboard!"
+                    >
+                      {contact.text}
+                    </p>}
+                  {contact.id === 3 && <p>
+                    <a
+                      href={contact.text}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      profile
+                    </a></p>}
+                  <ReactTooltip eventOff="mouseout || scroll" delayHide={3000} event="click" />
                 </div>
               )
             })}

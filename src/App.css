@@ -238,7 +238,6 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .contact-wrapper {
-  /* max-width: 30vw; */
   margin: 2rem auto;
   display: flex;
   flex-direction: row;
@@ -258,7 +257,6 @@ a, a:link, a:visited, a:hover, a:active {
   padding-right: 2rem !important;
   margin: 0 auto;
   font-size: 1.5rem;
-  display: none;
   cursor: pointer;
 }
 
@@ -368,10 +366,14 @@ footer h3 {
     flex-direction: column-reverse;
   }
   .contact-wrapper {
-    max-width: 70vw;
+    flex-direction: column;
   }
   .contact-item p {
     font-size: 1.25rem;
+  }
+  .contact-item:nth-of-type(n+2) {
+    margin-left: 0;
+    margin-top: 0.5rem;
   }
 }
 
