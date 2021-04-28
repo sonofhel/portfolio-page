@@ -64,10 +64,6 @@ p span {
   margin: 0 auto;
 }
 
-.section-divider {
-  height: 15vh;
-}
-
 .display-block {
   display: block !important;
 }

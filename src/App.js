@@ -1,8 +1,7 @@
 import {Component} from "react"
-import {GrClose, GrMenu} from "react-icons/gr"
-import {GoCode} from "react-icons/go"
 import ReactTooltip from "react-tooltip"
 import "./App.css"
+import TopNavbar from "./components/TopNavbar"
 import NavItems from "./data/navItems"
 import SocialLinks from "./data/socialLinks"
 import Projects from "./data/projects"
@@ -38,13 +37,13 @@ class App extends Component {
     })
   }
 
-  divNames = [
-    "home", "about-me", "projects", "contact"
-  ]
-
   swipeTo(divID) {
-    const y = document.getElementById(this.divNames[divID-1]).getBoundingClientRect().top + window.pageYOffset - 50;
+    const sectionNames = [
+      "home", "about-me", "projects", "contact"
+    ]
+    const y = document.getElementById(sectionNames[divID-1]).getBoundingClientRect().top + window.pageYOffset - 50
     window.scrollTo({top: y, behavior: "smooth"})
+    console.log(this.state.mobileMenuVisible)
     if(this.state.mobileMenuVisible) {
       this.toggleMenu()
     }
@@ -62,33 +61,11 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <nav className={`top-navbar light ${!this.state.mobileMenuVisible && "box-shadow"}`}>
-          <div className="logo">
-            <span>DB</span>
-            <GoCode className="logo-icon" />
-          </div>
-          <ul className="nav-menu">
-            {NavItems.map(navItem => {
-              return (
-                <li className="nav-item" key={navItem.id} onClick={() => this.swipeTo(navItem.id)}>
-                  {navItem.name}
-                </li>
-              )
-            })}
-          </ul>
-          <div className="social-links">
-            {SocialLinks.map(socialLink => {
-              return (
-                <button className="social-item" onClick={() => window.open(socialLink.link)} key={socialLink.id}>
-                  {socialLink.icon}
-                </button>
-              )
-            })}
-          </div>
-          <button className="toggle-menu" onClick={this.toggleMenu}>
-            {this.state.mobileMenuVisible ? <GrClose className="toggle-icon" /> : <GrMenu className="toggle-icon" />}
-          </button>
-        </nav>
+        <TopNavbar
+          mobileMenuVisible={this.state.mobileMenuVisible}
+          swipeTo={this.swipeTo}
+          toggleMenu={this.toggleMenu}
+        />
         {this.state.mobileMenuVisible &&
           <nav className="mobile-navbar light box-shadow">
               <ul className="nav-menu">
@@ -140,7 +117,6 @@ class App extends Component {
             })}
           </div>
         </section>
-        {/* <div className="section-divider light"></div> */}
         <section className="contact light" id="contact">
           <h2>Contact</h2>
           <div className="underline"></div>

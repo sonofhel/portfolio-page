@@ -6,7 +6,7 @@ const projects = [
     id: 1,
     title: "shoplist",
     image: ProjectImage1,
-    description: "Shopping web companion created using React.js. It allows to create and save multiple named and editable lists. It's my first project made in this library. The idea came from Codecademy course where the app had only basic feature to create only one grocery list.",
+    description: "Shopping web companion created using React.js. It allows to add and save multiple named and editable lists. It's my first project made in this library. The idea came from Codecademy course where the app had only basic feature to create only one grocery list.",
     githubLink: "https://github.com/sonofhel/shoplist",
     liveLink: "https://shoplist-by-dave.netlify.app/",
   },

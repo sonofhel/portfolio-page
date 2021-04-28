@@ -30,6 +30,7 @@
   font-size: 2.5rem;
   padding-left: 1rem;
   cursor: default;
+  transition: var(--transition);
 }
 
 .logo span, .logo-icon {
@@ -311,6 +312,10 @@ footer h3 {
     animation-name: shake-button;
     animation-duration: 0.5s;
   }
+  .logo:hover {
+    color: var(--light-blue);
+    cursor: pointer;
+  }
   .home {
     background-image: url("./images/home-background-wide.jpg");
     padding-top: 15vh;
@@ -359,6 +364,9 @@ footer h3 {
     flex-direction: column;
     align-items: center;
   }
+  .projects-wrapper {
+    flex-direction: column-reverse;
+  }
   .contact-wrapper {
     max-width: 70vw;
   }
@@ -371,14 +379,14 @@ footer h3 {
   .top-navbar .nav-menu {
     display: none;
   }
+  .home .text-container h3 {
+    color: goldenrod;
+  }
   .toggle-menu {
     display: block;
   }
   .mobile-navbar {
     display: block;
-  }
-  .projects-wrapper {
-    flex-direction: column-reverse;
   }
   .contact-item p {
     font-size: 1rem;

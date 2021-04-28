@@ -8,7 +8,7 @@ const socialLinks = [
   },
   {
     id: 2,
-    link: "https://www.linkedin.com/in/dawid-bobowski-aa7907209/",
+    link: "https://www.linkedin.com/in/dawidbobowski/",
     icon: <FiLinkedin />
   },
   {
